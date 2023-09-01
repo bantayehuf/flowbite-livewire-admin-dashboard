@@ -38,7 +38,7 @@ class UsersList extends Component
         Gate::authorize('manage', User::class);
 
         $this->userDetail = User::from('users as u')
-            ->select('u.id', 'u.name', 'u.email', 'u.is_active', 'u.created_at', 'u.updated_at', 'd.name AS department', 'uu.name as created_by')
+            ->select('u.id', 'u.name', 'u.email', 'u.account_status', 'u.created_at', 'u.updated_at', 'd.name AS department', 'uu.name as created_by')
             ->with(['roles' => function ($query) {
                 return $query->select('name');
             }])
@@ -132,7 +132,7 @@ class UsersList extends Component
         Gate::authorize('manage', User::class);
 
         $users = User::from('users as u')
-            ->select('u.id', 'u.name', 'u.email', 'u.is_active', 'd.name AS department')
+            ->select('u.id', 'u.name', 'u.email', 'u.account_status', 'd.name AS department')
             ->with(['roles' => function ($query) {
                 return $query->select('name');
             }])

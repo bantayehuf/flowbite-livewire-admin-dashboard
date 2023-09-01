@@ -3,24 +3,24 @@
 --
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-    `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    `name` varchar(255) NOT NULL,
-    `email` varchar(255) NOT NULL,
-    `password` varchar(255) NOT NULL,
-    `profile_photo_path` varchar(2048) DEFAULT NULL,
-    `department` bigint(20) unsigned NOT NULL,
-    `is_active` tinyint(1) NOT NULL DEFAULT 1,
-    `email_verified_at` timestamp NULL DEFAULT NULL,
-    `remember_token` varchar(100) DEFAULT NULL,
-    `created_by` bigint(20) unsigned NOT NULL,
-    `created_at` timestamp NULL DEFAULT NULL,
-    `updated_at` timestamp NULL DEFAULT NULL,
-    PRIMARY KEY (`id`),
-    UNIQUE KEY `users_email_unique` (`email`),
-    KEY `users_user_department_foreign` (`department`),
-    KEY `users_created_by_foreign` (`created_by`),
-    CONSTRAINT `users_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `profile_photo_path` varchar(2048) DEFAULT NULL,
+  `department` bigint(20) unsigned NOT NULL,
+  `account_status` enum('active','blocked') NOT NULL DEFAULT 'active',
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_by` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`),
+  KEY `users_user_department_foreign` (`department`),
+  KEY `users_created_by_foreign` (`created_by`),
+  CONSTRAINT `users_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 --
 -- Table structure for table `departments`
 --
@@ -190,7 +190,7 @@ CREATE TABLE `failed_jobs` (
 -- Dumping data for table `users`
 --
 INSERT INTO `users` VALUES
-(1,'Bantayehu Fikadu','bantayehuf@gmail.com','$2y$10$mD96h5l3lS7xcqXDOagJeurTFM7Nl8LbfZpjAoN.be4HtyckpL9iG',NULL,1,1,NULL,NULL,1,'2023-09-01 09:45:08','2023-09-01 09:45:08');
+(1,'Bantayehu Fikadu','bantayehuf@gmail.com','$2y$10$heS5MQeEeetgRmYG6Hq0iu76IvCz.Hb28VOTSGhe2q/ifyjsG4T2a',NULL,1,'active',NULL,NULL,1,'2023-09-01 11:00:21','2023-09-01 11:00:21');
 
 --
 -- Dumping data for table `departments`

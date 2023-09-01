@@ -14,6 +14,7 @@ use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use Illuminate\Support\Facades\RateLimiter;
 use App\Actions\Fortify\UpdateUserProfileInformation;
+use App\Enums\UserAccountStatus;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -34,7 +35,7 @@ class FortifyServiceProvider extends ServiceProvider
             $user = User::where('email', $request->email)->first();
 
             if (
-                $user && $user->is_active === 1 &&
+                $user && $user->account_status === UserAccountStatus::Active->value &&
                 Hash::check($request->password, $user->password)
             ) {
                 return $user;

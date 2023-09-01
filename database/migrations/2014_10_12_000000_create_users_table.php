@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Enums\UserAccountStatus;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -19,7 +20,7 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->unsignedBigInteger('department');
             $table->index('department', 'users_user_department_foreign');
-            $table->boolean('is_active')->default(true);
+            $table->enum('account_status', array_map(fn($case) => $case->value, UserAccountStatus::cases()))->default(UserAccountStatus::Active->value);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->unsignedBigInteger('created_by');

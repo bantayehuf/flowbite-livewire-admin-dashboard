@@ -2,6 +2,7 @@
 
 namespace App\Livewire\User;
 
+use App\Enums\UserAccountStatus;
 use Livewire\Form;
 use App\Utils\Strg;
 use App\Models\User;
@@ -113,19 +114,27 @@ class UserForm extends Form
             $id = $status['id'];
             $to = $status['to'];
 
-            $user = User::findOrFail($id);
+            if (($to === 0 || $to  === 1)) {
 
-            if (($to === 0 || $to  === 1) && $user->is_active !== $to) {
-                $user->is_active = $to;
+                $change_to = $to === 1 ? UserAccountStatus::Active->value : UserAccountStatus::Blocked->value;
 
-                $user->save();
+                $user = User::findOrFail($id);
 
-                // On blocking the user, remove the user session
-                if ($to  === 0) {
-                    // Delete the session
-                    DB::table('sessions')
-                        ->where('user_id', $user->id)
-                        ->delete();
+                if($user->account_status !== $change_to){
+
+                    $user->account_status = $change_to;
+
+                    $user->save();
+
+                    // On blocking the user, remove the user session,
+                    // To logout if the account has the active session.
+                    if ($to  === 0) {
+                        // Delete the session
+                        DB::table('sessions')
+                            ->where('user_id', $user->id)
+                            ->delete();
+                    }
+
                 }
 
                 Toast::success($this->component, 'User status has been changed successfully!');

@@ -158,7 +158,7 @@
                     <div class="flex flex-col">
                         <span class="mb-1 text-gray-500 text-base dark:text-gray-400">Status</span>
                         <span class="text-sm font-semibold">
-                            @if ($userDetail->is_active)
+                            @if ($userDetail->account_status === App\Enums\UserAccountStatus::Active->value)
                                 <x-badge.green>Active</x-badge.green>
                             @else
                                 <x-badge.red>Locked</x-badge.red>
@@ -208,7 +208,7 @@
                             @endif
                         </x-table.td>
                         <x-table.td>
-                            @if ($user->is_active)
+                            @if ($user->account_status === App\Enums\UserAccountStatus::Active->value)
                                 <x-badge.green>Active</x-badge.green>
                             @else
                                 <x-badge.red>Locked</x-badge.red>
@@ -224,7 +224,7 @@
                                     </a>
                                 </x-table.action-item>
 
-                                @if ($user->is_active)
+                                @if ($user->account_status === App\Enums\UserAccountStatus::Active->value)
                                     <x-table.action-item>
                                         <a href="#" wire:click.prevent="initAssignRole({{ $user->id }})"
                                             class="flex items-center py-2 px-4">
@@ -243,7 +243,7 @@
                                     </x-table.action-item>
                                 @endif
 
-                                @if ($user->is_active)
+                                @if ($user->account_status === App\Enums\UserAccountStatus::Active->value)
                                     <x-table.action-item class="text-green-500">
                                         <a href="#"
                                             x-on:click.prevent="$dispatch('show-user-active-status-dialog-modal', {payload: {id: {{ $user->id }}, to: 0}, title: 'Resting User Password', text: 'Are you sure you want to block a user named - {{ $user->name }}?'})"
