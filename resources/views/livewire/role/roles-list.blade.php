@@ -9,7 +9,7 @@
             <div class="relative w-full">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <i class="fa-solid fa-magnifying-glass text-gray-500 dark:text-gray-400" wire:loading.remove
-                        wire:target="search_query"></i>
+                        wire:target="searchQuery"></i>
                     <x-spinner.inline wire:target="searchQuery" />
                 </div>
                 <input type="search" wire:model.live.debounce.800ms="searchQuery"
