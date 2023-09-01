@@ -1,4 +1,4 @@
-# laravel-livewire-admin-dahboard
+# laravel-livewire-admin-dashboard
 Reusable Laravel Livewire admin dashboard layout built with TailwindCSS and Flowbite. It is fully customizable and easy to use and with ready-to-use components.
 
 
