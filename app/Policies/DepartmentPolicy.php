@@ -25,7 +25,7 @@ class DepartmentPolicy
      */
     public function update(User $user, Department $department): bool
     {
-        return $user->can("update_$this->parent") || ($user->can("update_own_$this->parent") && $user->id === $department->created_by);
+        return $user->can("update_$this->parent") || ($user->can("update_own_$this->parent") && $user->id == $department->created_by);
     }
 
 
@@ -34,7 +34,7 @@ class DepartmentPolicy
      */
     public function delete(User $user, Department $department): bool
     {
-        return $user->can("delete_$this->parent") || ($user->can("delete_own_$this->parent") && $user->id === $department->created_by);
+        return $user->can("delete_$this->parent") || ($user->can("delete_own_$this->parent") && $user->id == $department->created_by);
     }
 
 
