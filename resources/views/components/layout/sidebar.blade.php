@@ -24,8 +24,8 @@
             </button>
         </div>
 
-        <div :class="$store.showSidebar.on ? 'lg:block' : 'lg:hidden'"
-            class="overflow-y-auto py-4 px-3 h-full bg-white dark:bg-gray-800">
+        <div :class="$store.showSidebar.on ? 'lg:block px-3' : 'lg:hidden'"
+            class="overflow-y-auto py-4 h-full bg-white dark:bg-gray-800">
             <ul class="space-y-2">
 
                 <x-layout.sub.sidebar-item label="{{ __('Dashboard') }}" icon="fa-solid fa-gauge"
