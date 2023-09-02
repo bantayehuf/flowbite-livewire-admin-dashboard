@@ -41,18 +41,20 @@ CREATE TABLE `departments` (
 --
 DROP TABLE IF EXISTS `perm_permissions`;
 CREATE TABLE `perm_permissions` (
-    `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    `parent` varchar(255) NOT NULL,
-    `child` varchar(255) NOT NULL,
-    `name` varchar(255) NOT NULL,
-    `guard_name` varchar(255) NOT NULL,
-    `created_at` timestamp NULL DEFAULT NULL,
-    `updated_at` timestamp NULL DEFAULT NULL,
-    PRIMARY KEY (`id`),
-    UNIQUE KEY `perm_permissions_name_guard_name_unique` (`name`, `guard_name`),
-    KEY `perm_permissions_parent_index_key` (`parent`),
-    KEY `perm_permissions_child_index_key` (`parent`)
-) ENGINE = InnoDB AUTO_INCREMENT = 13 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `parent` varchar(255) NOT NULL,
+  `child` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `guard_name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `perm_permissions_name_unique` (`name`),
+  KEY `web_prm_permissions_name_index_key` (`name`),
+  KEY `web_prm_permissions_guard_index_key` (`guard_name`),
+  KEY `web_prm_permissions_parent_index_key` (`parent`),
+  KEY `web_prm_permissions_child_index_key` (`child`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 --
 -- Table structure for table `perm_roles`
 --
