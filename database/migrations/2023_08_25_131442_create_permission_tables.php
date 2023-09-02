@@ -29,13 +29,13 @@ class CreatePermissionTables extends Migration
             $table->bigIncrements('id'); // permission id
             $table->string('parent'); // Name to identify, for what the permission is (e.g. posts, users).
             $table->string('child'); // Name of action (e.g. add, edit, delete).
-            $table->string('name'); // The name of permission. paren.child (e.g. posts.edit, users.delete)
+            $table->string('name')->unique(); // The name of permission. paren.child (e.g. posts.edit, users.delete)
             $table->string('guard_name');
             $table->timestamps();
-            $table->index('parent', 'perm_permissions_parent_index_key');
-            $table->index('parent', 'perm_permissions_child_index_key');
-
-            $table->unique(['name', 'guard_name']);
+            $table->index('name', 'web_prm_permissions_name_index_key');
+            $table->index('guard_name', 'web_prm_permissions_guard_index_key');
+            $table->index('parent', 'web_prm_permissions_parent_index_key');
+            $table->index('child', 'web_prm_permissions_child_index_key');
         });
 
         Schema::create($tableNames['roles'], function (Blueprint $table) use ($teams, $columnNames) {
