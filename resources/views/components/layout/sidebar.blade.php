@@ -44,24 +44,26 @@
                     <x-layout.sub.sidebar-collapse-item label="{{ __('Billings') }}" route="#" />
                 </x-layout.sub.sidebar-collapse>
 
-                <x-layout.sub.sidebar-collapse id="admin" label="{{ __('Admin') }}"
-                    icon="fa-solid fa-screwdriver-wrench">
+                @if (Auth::user()->canViewMenuGroup('admin'))
+                    <x-layout.sub.sidebar-collapse id="admin" label="{{ __('Admin') }}"
+                        icon="fa-solid fa-screwdriver-wrench">
 
-                    @can('view', App\Models\Department::class)
-                        <x-layout.sub.sidebar-collapse-item label="{{ __('Departments') }}"
-                            route="{{ route('department.show') }}" />
-                    @endcan
+                        @can('view', App\Models\Department::class)
+                            <x-layout.sub.sidebar-collapse-item label="{{ __('Departments') }}"
+                                route="{{ route('department.show') }}" />
+                        @endcan
 
-                    @can('view', Spatie\Permission\Models\Role::class)
-                        <x-layout.sub.sidebar-collapse-item label="{{ __('Roles') }}"
-                            route="{{ route('roles.show') }}" />
-                    @endcan
+                        @can('view', Spatie\Permission\Models\Role::class)
+                            <x-layout.sub.sidebar-collapse-item label="{{ __('Roles') }}"
+                                route="{{ route('roles.show') }}" />
+                        @endcan
 
-                    @can('manage', App\Models\User::class)
-                        <x-layout.sub.sidebar-collapse-item label="{{ __('Users') }}"
-                            route="{{ route('users.show') }}" />
-                    @endcan
-                </x-layout.sub.sidebar-collapse>
+                        @can('manage', App\Models\User::class)
+                            <x-layout.sub.sidebar-collapse-item label="{{ __('Users') }}"
+                                route="{{ route('users.show') }}" />
+                        @endcan
+                    </x-layout.sub.sidebar-collapse>
+                @endif
             </ul>
 
             <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">

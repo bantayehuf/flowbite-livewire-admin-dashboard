@@ -84,7 +84,7 @@ class Permissions extends Component
                 }
             }
 
-            // Cheking all actions are selected or not for the parent
+            // Cheking all actions are selected or not for the current parent name
             $this->selectAll[$index] = $active_count === $parent->count();
         }
 

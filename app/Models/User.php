@@ -11,6 +11,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Services\MenuPermService;
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -27,10 +29,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'employee_id',
         'name',
         'email',
-        'password',
+        'phone_number',
+        'position',
         'department',
+        'residence_location_name',
+        'residence_geo_location',
+        'password',
         'created_by',
     ];
 
@@ -63,4 +70,16 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+
+    /**
+     *Grouping menus and mapping them with user permissions,
+     * to controll user privileges to show menu items collapse in sidebar,
+     * if the user has permission on one of the menu item, the collapse will shown
+     */
+    public function canViewMenuGroup(string $menuGroupName): bool
+    {
+        return  MenuPermService::hasViewPerm($menuGroupName);
+    }
 }
