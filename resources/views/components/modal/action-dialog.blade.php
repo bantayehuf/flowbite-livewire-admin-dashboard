@@ -27,16 +27,16 @@
 }" x-on:show-{{ $eventName }}-modal.window="mopen($event.detail)"
     x-on:close-{{ $eventName }}-modal.window="mclose()" x-on:keydown.escape.window="mclose()" x-show="show"
     id="{{ $id }}"
-    class="fixed w-screen h-screen z-50 inset-0 flex justify-center items-center bg-black bg-opacity-50 overflow-y-auto overflow-x-hidden"
+    class="fixed w-screen h-screen z-50 inset-0 flex justify-center items-center bg-black bg-opacity-50 overflow-hidden"
     style="display: none;">
 
     <div x-show="show" x-trap.inert.noscroll="show" x-transition:enter="ease-out duration-300"
         x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
-        class="relative w-full max-w-md max-h-full bg-white rounded-lg shadow-xl dark:bg-gray-700 transform transition-all"
+        class="relative w-full max-w-md max-h-full bg-white rounded-lg shadow-xl dark:bg-gray-700 transform transition-all overflow-y-auto"
         x-transition:enter="ease-out duration-100">
 
-        <div class="flex items-center justify-center px-6 py-3 border-b dark:border-gray-600">
+        <div class="flex items-center justify-center px-6 pt-3">
             <h4 class="text-lg font-medium text-gray-900 dark:text-white" x-text="action.title"></h4>
         </div>
 

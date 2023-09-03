@@ -20,7 +20,7 @@
 }" x-on:show-passwd-confrim-modal.window="mopen()"
     x-on:close-passwd-confrim-modal.window="mclose()" x-on:keydown.escape.window="mclose()" x-show="show"
     id="{{ $id }}"
-    class="fixed w-screen h-screen z-50 inset-0 flex justify-center items-center bg-black bg-opacity-50 overflow-y-auto overflow-x-hidden"
+    class="fixed w-screen h-screen z-50 inset-0 flex justify-center items-center bg-black bg-opacity-50 overflow-hidden"
     style="display: none;">
 
     <div x-show="show" x-trap.inert.noscroll="show" x-transition:enter="ease-out duration-300"
@@ -28,9 +28,9 @@
         x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200"
         x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
         x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-        class="relative w-full max-w-xl max-h-full bg-white rounded-lg shadow-xl dark:bg-gray-700 transform transition-all">
+        class="relative w-full max-w-xl max-h-full bg-white rounded-lg shadow-xl dark:bg-gray-700 transform transition-all overflow-y-auto">
 
-        <div class="flex items-center justify-between px-4 py-3 border-b dark:border-gray-600">
+        <div class="flex items-center justify-between px-4 py-2 border-b dark:border-gray-600">
             <h4 class="text-lg font-medium text-gray-900 dark:text-white">
                 {{ __('Confirm Password') }}
             </h4>
