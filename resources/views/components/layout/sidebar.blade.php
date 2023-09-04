@@ -9,7 +9,9 @@
                 class="text-base font-semibold text-primary-500 uppercase dark:text-gray-400 mr-auto">
                 <a href="/" class="flex items-center justify-between">
                     <img src="/static/images/logo.png" class="mr-3" alt="Flowbite Logo" />
-                    <span class="self-center text-lg font-semibold whitespace-nowrap dark:text-white">AB Company</span>
+                    <span class="self-center text-lg font-semibold whitespace-nowrap dark:text-white">
+                        {{ config('app.brand_name', 'AB Company') }}
+                    </span>
                 </a>
             </h5>
             <button type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation"

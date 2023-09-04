@@ -27,7 +27,7 @@
                 <a href="/" class="hidden sm:flex items-center justify-between mr-4">
                     <img src="/static/images/logo.png" class="mr-3 h-8" alt="Flowbite Logo" />
                     <span class="self-center text-primary-500 text-2xl font-semibold whitespace-nowrap dark:text-white">
-                        AB Company
+                        {{ config('app.brand_name', 'AB Company') }}
                     </span>
                 </a>
             </div>
