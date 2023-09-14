@@ -14,9 +14,6 @@ class DepartmentController extends Controller
      */
     public function show(Request $request)
     {
-        return view('pages.departments', [
-            'request' => $request,
-            'user' => $request->user(),
-        ]);
+        return view('pages.departments');
     }
 }

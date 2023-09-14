@@ -14,9 +14,6 @@ class RoleController extends Controller
      */
     public function show(Request $request)
     {
-        return view('pages.roles', [
-            'request' => $request,
-            'user' => $request->user(),
-        ]);
+        return view('pages.roles');
     }
 }

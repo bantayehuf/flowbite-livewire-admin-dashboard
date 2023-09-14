@@ -26,9 +26,6 @@ class UserController extends Controller
      */
     public function profile(Request $request)
     {
-        return view('pages.profile', [
-            'request' => $request,
-            'user' => $request->user(),
-        ]);
+        return view('pages.profile');
     }
 }
