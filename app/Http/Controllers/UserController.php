@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class UserController extends Controller
 {
     /**
      * Show the screen for the list of users.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View
      */
-    public function show(Request $request)
+    public function show()
     {
         return view('pages.users');
     }
@@ -21,10 +18,9 @@ class UserController extends Controller
     /**
      * Show the screen for self profile.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View
      */
-    public function profile(Request $request)
+    public function profile()
     {
         return view('pages.profile');
     }
