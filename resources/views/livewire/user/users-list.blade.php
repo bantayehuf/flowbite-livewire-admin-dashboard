@@ -246,7 +246,7 @@
                                 @if ($user->account_status === App\Enums\UserAccountStatus::Active->value)
                                     <x-table.action-item class="text-green-500">
                                         <a href="#"
-                                            x-on:click.prevent="$dispatch('show-user-active-status-dialog-modal', {payload: {id: {{ $user->id }}, to: 0}, title: 'Resting User Password', text: 'Are you sure you want to block a user named - {{ $user->name }}?'})"
+                                            x-on:click.prevent="$dispatch('show-user-active-status-dialog-modal', {payload: {id: {{ $user->id }}, to: 0}, title: 'Block User', text: 'Are you sure you want to block a user named - {{ $user->name }}?'})"
                                             class="flex items-center py-2 px-4">
                                             <i class="fa-solid fa-unlock me-3"></i>
                                             {{ __('Active >> Block') }}
@@ -255,7 +255,7 @@
                                 @else
                                     <x-table.action-item class="text-red-500">
                                         <a href="#"
-                                            x-on:click.prevent="$dispatch('show-user-active-status-dialog-modal', {payload: {id: {{ $user->id }}, to: 1}, title: 'Resting User Password', text: 'Are you sure you want to unblock a user named - {{ $user->name }}?'})"
+                                            x-on:click.prevent="$dispatch('show-user-active-status-dialog-modal', {payload: {id: {{ $user->id }}, to: 1}, title: 'Unblock User', text: 'Are you sure you want to unblock a user named - {{ $user->name }}?'})"
                                             class="flex items-center py-2 px-4">
                                             <i class="fa-solid fa-lock me-3"></i>
                                             {{ __('Blocked >> Activate') }}
