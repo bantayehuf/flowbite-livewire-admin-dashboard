@@ -102,7 +102,7 @@ class UsersList extends Component
             ->select('r.id', 'r.name')
             ->where('r.for_department', '=', $this->user->department)->get();
 
-        $this->dispatch('show-user-management-modal',  title: 'Resting User Password', actionName: 'assignRole');
+        $this->dispatch('show-user-management-modal',  title: 'Manage User Role', actionName: 'assignRole');
     }
 
     public function assignRole()
